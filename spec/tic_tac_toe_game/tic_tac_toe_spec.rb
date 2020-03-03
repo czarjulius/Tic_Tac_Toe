@@ -13,5 +13,18 @@ describe TicTacToeGame::Position do
                                         - - -)
             position.turn.should == "x"
         end
+        it "should initialize a position given a board and turn" do
+            position = TicTacToeGame::Position.new(%w(- x -
+                                                      - - -
+                                                      - o -), "o")
+            position.board.should == %w(- x -
+                                        - - -
+                                        - o -)
+            position.turn.should == "o"
+        end
+
+
     end
 end
+
+

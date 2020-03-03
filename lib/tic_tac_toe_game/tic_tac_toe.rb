@@ -10,8 +10,8 @@ module TicTacToeGame
       def initialize board = nil, turn = "x"
         @dim = 3
         @size = @dim * @dim
-        @board = Array.new(@size, "-")
-        @turn = "x"
+        @board = board || Array.new(@size, "-")
+        @turn = turn
       end
     end
 
