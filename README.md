@@ -16,7 +16,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/czarjulius/ttt_app.
+Bug reports and pull requests are welcome on GitHub at https://github.com/czarjulius/Tic_Tac_Toe.
 
 ## License
 
