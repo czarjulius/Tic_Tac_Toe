@@ -51,6 +51,13 @@ module TicTacToeGame
         }
       end
 
+      def blocked?
+        win_lines.all? { |line| 
+          line.any? {|line_piece| line_piece == "x" } &&
+          line.any? {|line_piece| line_piece == "o" }
+        }
+      end
+
     end
 
 

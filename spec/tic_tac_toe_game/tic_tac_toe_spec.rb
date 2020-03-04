@@ -84,6 +84,13 @@ describe TicTacToeGame::Position do
                                             o o o)).win?("o").should == true
         end
     end
+
+    context "#blocked?" do
+        it "Should determine not blocked" do
+            TicTacToeGame::Position.new.blocked?.should == false
+        end
+        
+    end
 end
 
 
