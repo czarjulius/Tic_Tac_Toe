@@ -110,6 +110,11 @@ describe TicTacToeGame::Position do
                                            o x -
                                            o - x), "o").evaluate_leaf.should == -100
         end
+        it "Should determine a blocked position" do
+            TicTacToeGame::Position.new(%w(o x o
+                                           o x -
+                                           x o x), "x").evaluate_leaf.should == 0
+        end
     end
 end
 

@@ -61,6 +61,7 @@ module TicTacToeGame
       def evaluate_leaf
         return 100 if win?("x")
         return -100 if win?("o")
+        return 0 if blocked?
       end
 
     end
