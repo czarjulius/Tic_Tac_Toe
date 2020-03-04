@@ -95,6 +95,12 @@ describe TicTacToeGame::Position do
                                            o x o)).blocked?.should == true
         end
     end
+
+    context "#evaluate_leaf" do
+        it "Should determine nothing from initial position" do
+            TicTacToeGame::Position.new.evaluate_leaf.should == nil
+        end
+    end
 end
 
 

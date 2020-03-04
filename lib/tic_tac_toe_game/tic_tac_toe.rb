@@ -58,6 +58,10 @@ module TicTacToeGame
         }
       end
 
+      def evaluate_leaf
+        
+      end
+
     end
 
 
