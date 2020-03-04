@@ -45,6 +45,10 @@ module TicTacToeGame
         ).map {|line| line.map {|idx| @board[idx] }}
       end
 
+      def win? piece
+        false
+      end
+
     end
 
 

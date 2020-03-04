@@ -67,6 +67,13 @@ describe TicTacToeGame::Position do
             win_lines.should include(["2","4","6"])
         end
     end
+
+    context "#win?" do
+        it "Should determine no win" do
+            TicTacToeGame::Position.new.win?("x").should == false
+            TicTacToeGame::Position.new.win?("o").should == false
+        end
+    end
 end
 
 
