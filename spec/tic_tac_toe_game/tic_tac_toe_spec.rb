@@ -25,6 +25,15 @@ describe TicTacToeGame::Position do
 
 
     end
+    context "#move" do
+        it "Should make a move" do
+            position = TicTacToeGame::Position.new.move(0)
+            position.board.should == %w(x - -
+                                        - - -
+                                        - - -)
+            position.turn.should == "o"
+        end
+    end
 end
 
 

@@ -13,6 +13,17 @@ module TicTacToeGame
         @board = board || Array.new(@size, "-")
         @turn = turn
       end
+
+      def other_turn
+        @turn == "x" ? "o" : "x"
+      end
+
+      def move idx
+        @board[idx] = @turn
+        @turn = other_turn
+        self
+      end
+
     end
 
 
