@@ -123,6 +123,11 @@ describe TicTacToeGame::Position do
                                            x o o
                                            x o o)).minimax.should == 100
         end
+        it "Should determine a  win in 1 for x" do
+            TicTacToeGame::Position.new(%w(x x -
+                                           - - -
+                                           - o o)).minimax.should == 99
+        end
     end
 end
 

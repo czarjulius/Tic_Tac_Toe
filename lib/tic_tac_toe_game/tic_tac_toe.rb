@@ -64,9 +64,15 @@ module TicTacToeGame
         return 0 if blocked?
       end
 
-      def minimax
+      def minimax idx = nil
+        move(idx) if idx
         leaf_value = evaluate_leaf
         return leaf_value if leaf_value
+        possible_moves.map { |idx|
+          minimax(idx).send(:-, @movelist.count+1)
+        }.send(:max)
+      ensure
+        unmove if idx
       end
 
     end
