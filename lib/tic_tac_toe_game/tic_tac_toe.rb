@@ -32,6 +32,10 @@ module TicTacToeGame
         self
       end
 
+      def possible_moves
+        @board.map.with_index { |piece, idx| piece == "-" ? idx : nil }
+      end
+
     end
 
 

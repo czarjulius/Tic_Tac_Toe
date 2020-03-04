@@ -43,6 +43,12 @@ describe TicTacToeGame::Position do
             position.turn.should == init.turn
         end
     end
+
+    context "#possible_moves" do
+        it "Should list possible moves for initial position" do
+            TicTacToeGame::Position.new.possible_moves.should == (0..8).to_a
+        end
+    end
 end
 
 
