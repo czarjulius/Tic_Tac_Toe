@@ -89,7 +89,11 @@ describe TicTacToeGame::Position do
         it "Should determine not blocked" do
             TicTacToeGame::Position.new.blocked?.should == false
         end
-        
+        it "Should determine blocked" do
+            TicTacToeGame::Position.new(%w(x o x
+                                           o x x
+                                           o x o)).blocked?.should == true
+        end
     end
 end
 
