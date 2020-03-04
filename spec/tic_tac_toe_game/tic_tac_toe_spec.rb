@@ -4,7 +4,7 @@ RSpec.describe TicTacToeGame::TicTacToe do
     it { expect(TicTacToeGame::TicTacToe.welcome).to eql 'Welcome to Tic Tac Toe Game' }
 end
 
-describe TicTacToeGame::Position do
+RSpec.describe TicTacToeGame::Position do
     context "#new" do
         it "Should initialize a new board" do
             position = TicTacToeGame::Position.new
@@ -126,7 +126,12 @@ describe TicTacToeGame::Position do
         it "Should determine a  win in 1 for x" do
             TicTacToeGame::Position.new(%w(x x -
                                            - - -
-                                           - o o)).minimax.should == 99
+                                           - o o), "x").minimax.should == 99
+        end
+        it "Should determines a  win in 1 for o" do
+            TicTacToeGame::Position.new(%w(x x -
+                                           - - -
+                                           - o o), "o").minimax.should == -99
         end
     end
 end

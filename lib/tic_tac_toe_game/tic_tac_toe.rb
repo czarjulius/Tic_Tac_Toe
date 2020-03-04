@@ -69,8 +69,8 @@ module TicTacToeGame
         leaf_value = evaluate_leaf
         return leaf_value if leaf_value
         possible_moves.map { |idx|
-          minimax(idx).send(:-, @movelist.count+1)
-        }.send(:max)
+          minimax(idx).send(@turn == "x" ? :- : :+, @movelist.count+1)
+        }.send(@turn == "x" ? :max : :min)
       ensure
         unmove if idx
       end
