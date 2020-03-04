@@ -48,6 +48,24 @@ describe TicTacToeGame::Position do
         it "Should list possible moves for initial position" do
             TicTacToeGame::Position.new.possible_moves.should == (0..8).to_a
         end
+        it "Should list possible moves for a position" do
+            TicTacToeGame::Position.new.move(3).possible_moves.should == [0,1,2,4,5,6,7,8]
+        end
+    end
+
+    context "#win_lines" do
+        it "Should find winning columns, rows, diagonals" do
+            win_lines = TicTacToeGame::Position.new(%w(0 1 2
+                                                       3 4 5
+                                                       6 7 8)).win_lines
+            win_lines.should include(["0","1","2"])
+            win_lines.should include(["3","4","5"])
+            win_lines.should include(["6","7","8"])
+            win_lines.should include(["0","3","6"])
+            win_lines.should include(["1","4","7"])
+            win_lines.should include(["0","4","8"])
+            win_lines.should include(["2","4","6"])
+        end
     end
 end
 

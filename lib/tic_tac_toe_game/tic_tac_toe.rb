@@ -33,7 +33,16 @@ module TicTacToeGame
       end
 
       def possible_moves
-        @board.map.with_index { |piece, idx| piece == "-" ? idx : nil }
+        @board.map.with_index { |piece, idx| piece == "-" ? idx : nil }.compact
+      end
+
+      def win_lines
+        (
+          (0..@size.pred).each_slice(@dim).to_a +
+          (0..@size.pred).each_slice(@dim).to_a.transpose +
+          [ (0..@size.pred).step(@dim.succ).to_a ] + 
+          [ (@dim.pred..(@size-@dim)).step(@dim.pred).to_a ]
+        ).map {|line| line.map {|idx| @board[idx] }}
       end
 
     end
