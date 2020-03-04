@@ -12,6 +12,7 @@ module TicTacToeGame
         @size = @dim * @dim
         @board = board || Array.new(@size, "-")
         @turn = turn
+        @movelist = []
       end
 
       def other_turn
@@ -20,6 +21,13 @@ module TicTacToeGame
 
       def move idx
         @board[idx] = @turn
+        @turn = other_turn
+        @movelist << idx
+        self
+      end
+
+      def unmove
+        @board[@movelist.pop] = "-"
         @turn = other_turn
         self
       end

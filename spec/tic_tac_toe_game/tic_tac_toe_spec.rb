@@ -34,6 +34,15 @@ describe TicTacToeGame::Position do
             position.turn.should == "o"
         end
     end
+
+    context "#unmove" do
+        it "Should undo a move" do
+            position = TicTacToeGame::Position.new.move(1).unmove
+            init = TicTacToeGame::Position.new
+            position.board.should == init.board
+            position.turn.should == init.turn
+        end
+    end
 end
 
 
