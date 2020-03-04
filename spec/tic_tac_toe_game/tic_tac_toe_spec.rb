@@ -78,6 +78,11 @@ describe TicTacToeGame::Position do
                                             - - -
                                             - o o)).win?("x").should == true
         end
+        it "Should determine a win for x" do
+            TicTacToeGame::Position.new(%w(x x -
+                                            - - -
+                                            o o o)).win?("o").should == true
+        end
     end
 end
 
