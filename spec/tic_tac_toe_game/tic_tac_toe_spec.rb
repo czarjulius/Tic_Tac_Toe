@@ -116,6 +116,14 @@ describe TicTacToeGame::Position do
                                            x o x), "x").evaluate_leaf.should == 0
         end
     end
+
+    context "#minimax" do
+        it "Should determine an already won position" do
+            TicTacToeGame::Position.new(%w(x x -
+                                           x o o
+                                           x o o)).minimax.should == 100
+        end
+    end
 end
 
 

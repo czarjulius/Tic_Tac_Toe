@@ -64,6 +64,11 @@ module TicTacToeGame
         return 0 if blocked?
       end
 
+      def minimax
+        leaf_value = evaluate_leaf
+        return leaf_value if leaf_value
+      end
+
     end
 
 
