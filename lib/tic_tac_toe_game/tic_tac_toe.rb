@@ -46,7 +46,9 @@ module TicTacToeGame
       end
 
       def win? piece
-        false
+        win_lines.any? { |line|
+          line.all? { |line_piece| line_piece == piece }
+        }
       end
 
     end
