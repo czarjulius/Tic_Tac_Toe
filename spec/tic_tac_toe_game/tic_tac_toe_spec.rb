@@ -105,6 +105,11 @@ describe TicTacToeGame::Position do
                                            o x -
                                            o - x)).evaluate_leaf.should == 100
         end
+        it "Should determine a won position for o" do
+            TicTacToeGame::Position.new(%w(o x -
+                                           o x -
+                                           o - x), "o").evaluate_leaf.should == -100
+        end
     end
 end
 
