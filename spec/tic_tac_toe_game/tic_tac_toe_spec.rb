@@ -100,6 +100,11 @@ describe TicTacToeGame::Position do
         it "Should determine nothing from initial position" do
             TicTacToeGame::Position.new.evaluate_leaf.should == nil
         end
+        it "Should determine a won position for x" do
+            TicTacToeGame::Position.new(%w(x - -
+                                           o x -
+                                           o - x)).evaluate_leaf.should == 100
+        end
     end
 end
 
