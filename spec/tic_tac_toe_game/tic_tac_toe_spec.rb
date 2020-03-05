@@ -3,6 +3,20 @@ require_relative '../../lib/tic_tac_toe_game/position.rb'
 
 
 RSpec.describe TicTacToeGame::Position do
+    context "#other_turn" do
+        it "Should switch from 'o' to 'x'" do
+            position = TicTacToeGame::Position.new(nil, "o")
+
+            position.other_turn.should == "x"
+        end
+
+        it "Should switch from 'x' to 'o'" do
+            position = TicTacToeGame::Position.new(nil, "x")
+
+            position.other_turn.should == "o"
+        end
+    end
+
     context "#new" do
         it "Should initialize a new board" do
             position = TicTacToeGame::Position.new
@@ -108,21 +122,78 @@ RSpec.describe TicTacToeGame::Position do
         end
     end
 
-    context "#minimax" do
-        it "Should determine an already won position" do
-            TicTacToeGame::Position.new(%w(x x -
-                                           x o o
-                                           x o o)).minimax.should == 100
+    # context "#minimax" do
+    #     it "Should determine an already won position" do
+    #         TicTacToeGame::Position.new(%w(x x -
+    #                                        x o o
+    #                                        x o o)).minimax.should == 100
+    #     end
+    #     it "Should determine a  win in 1 for x" do
+    #         TicTacToeGame::Position.new(%w(x x -
+    #                                        - - -
+    #                                        - o o), "x").minimax.should == 99
+    #     end
+    #     it "Should determines a  win in 1 for o" do
+    #         TicTacToeGame::Position.new(%w(x x -
+    #                                        - - -
+    #                                        - o o), "o").minimax.should == -99
+    #     end
+    # end
+
+    context "#end?" do
+        it "Should see a position has not ended" do
+            TicTacToeGame::Position.new.end?.should == false
         end
-        it "Should determine a  win in 1 for x" do
-            TicTacToeGame::Position.new(%w(x x -
-                                           - - -
-                                           - o o), "x").minimax.should == 99
+
+        it "Should see a position has ended with win for x" do
+            TicTacToeGame::Position.new(%w(- - x
+                                           - - x
+                                           o o x)).end?.should == true
         end
-        it "Should determines a  win in 1 for o" do
-            TicTacToeGame::Position.new(%w(x x -
-                                           - - -
-                                           - o o), "o").minimax.should == -99
+        it "Should see a position has ended with win for o" do
+            TicTacToeGame::Position.new(%w(- - x
+                                           - - x
+                                           o o o)).end?.should == true
+        end
+        it "Should see a position has ended due to no more moves" do
+            TicTacToeGame::Position.new(%w(x o x
+                                           x o x
+                                           o x o)).end?.should == true
+        end
+
+    end
+
+    context "#to_s" do
+        it "Should represent a position" do
+            TicTacToeGame::Position.new.move(3).move(4).to_s.should == <<-EOS
+   |   |   
+-----------
+ x | o |   
+-----------
+   |   |   
+      EOS
+        end
+    end
+end
+
+describe TicTacToeGame::TTT do
+    context "#ask_for_player" do
+        it "Should ask who will play first" do
+            ttt = TicTacToeGame::TTT.new
+            ttt.stub(:gets => "1\n")
+            ttt.stub(:puts)
+            ttt.stub(:print)
+            ttt.ask_for_player.should == "player1"
+        end
+    end
+    context "#ask_for_move" do
+        it "Should ask for a valid move" do
+            position = TicTacToeGame::Position.new
+            ttt = TicTacToeGame::TTT.new
+            ttt.stub(:gets => "1\n")
+            ttt.stub(:puts)
+            ttt.stub(:print)
+            ttt.ask_for_move(position).should == 1
         end
     end
 end

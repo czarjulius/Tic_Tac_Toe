@@ -10,6 +10,7 @@ module TicTacToeGame
             @board[idx] = @turn
             @turn = other_turn
             @movelist << idx
+            puts @movelist
             self
         end
     end
