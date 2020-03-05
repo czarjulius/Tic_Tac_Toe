@@ -1,8 +1,6 @@
-require_relative '../../lib/tic_tac_toe_game/tic_tac_toe.rb'
+require_relative '../../lib/tic_tac_toe_game/position.rb'
 
-RSpec.describe TicTacToeGame::TicTacToe do
-    it { expect(TicTacToeGame::TicTacToe.welcome).to eql 'Welcome to Tic Tac Toe Game' }
-end
+
 
 RSpec.describe TicTacToeGame::Position do
     context "#new" do
@@ -44,14 +42,7 @@ RSpec.describe TicTacToeGame::Position do
         end
     end
 
-    context "#possible_moves" do
-        it "Should list possible moves for initial position" do
-            TicTacToeGame::Position.new.possible_moves.should == (0..8).to_a
-        end
-        it "Should list possible moves for a position" do
-            TicTacToeGame::Position.new.move(3).possible_moves.should == [0,1,2,4,5,6,7,8]
-        end
-    end
+  
 
     context "#win_lines" do
         it "Should find winning columns, rows, diagonals" do
