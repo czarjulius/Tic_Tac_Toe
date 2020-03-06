@@ -32,47 +32,30 @@ module TicTacToeGame
             self
         end
 
-        def unmove
-            @board[@movelist.pop] = "-"
-            @toggle.other_turn
-            self
-        end
-
-         def win_lines
-        (
-            (0..@size.pred).each_slice(@dim).to_a + (0..@size.pred).each_slice(@dim).to_a.transpose + [ (0..@size.pred).step(@dim.succ).to_a ] + [ (@dim.pred..(@size-@dim)).step(@dim.pred).to_a ]
-        ).map {|line| line.map {|idx| @board[idx] }}
+        def win_lines
+            (
+                (0..@size.pred).each_slice(@dim).to_a + (0..@size.pred).each_slice(@dim).to_a.transpose + [ (0..@size.pred).step(@dim.succ).to_a ] + [ (@dim.pred..(@size-@dim)).step(@dim.pred).to_a ]
+            ).map {|line| line.map {|idx| @board[idx] }}
         end
 
         def win? piece
-        win_lines.any? { |line|
-            line.all? { |line_piece| line_piece == piece }
-        }
+            win_lines.any? { |line|
+                line.all? { |line_piece| line_piece == piece }
+            }
         end
 
         def blocked?
-        win_lines.all? { |line| 
-            line.any? {|line_piece| line_piece == "x" } &&
-            line.any? {|line_piece| line_piece == "o" }
-        }
+            win_lines.all? { |line| 
+                line.any? {|line_piece| line_piece == "x" } &&
+                line.any? {|line_piece| line_piece == "o" }
+            }
         end
 
         def evaluate_leaf
-        return 100 if win?("x")
-        return -100 if win?("o")
-        return 0 if blocked?
+            return 100 if win?("x")
+            return -100 if win?("o")
+            return 0 if blocked?
         end
-
-        # def minimax idx = nil
-        # move(idx) if idx
-        # leaf_value = evaluate_leaf
-        # return leaf_value if leaf_value
-        # @play.possible_moves.map { |idx|
-        #     minimax(idx).send(@turn == "x" ? :- : :+, @movelist.count+1)
-        # }.send(@turn == "x" ? :max : :min)
-        # ensure
-        # unmove if idx
-        # end
 
         def end?
             win?("x") || win?("o") || @board.count("-") == 0
@@ -87,6 +70,17 @@ module TicTacToeGame
 
     class TTT
         def ask_for_player
+            print <<-EOS 
+            \n
+             ========================================= GAME INSTRUCTIONS ==========================================
+            || 1. The game is played on a grid that's 3 squares by 3 squares.                                     ||
+            || 2. The first player to get 3 of her marks in a row (up, down, across, or diagonally) is the winner.||
+            || 3. You can chose to move from 0 to 8                                                               ||
+            || 4. When all 9 squares are full, the game is over. If no player has 3 marks in a row,               ||
+            ||    the game ends in a tie.                                                                         ||
+             ======================================================================================================
+             \n
+            EOS
             puts "Who do you want to play first"
             puts "1. player1"
             puts "2. player2"
@@ -117,7 +111,7 @@ module TicTacToeGame
             while !position.end?
                 puts position
                 puts
-                idx = @player == "player1" ? ask_for_player : ask_for_player
+                idx = ask_for_move(position)
                 position.move(idx)
             end
             puts position

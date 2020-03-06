@@ -3,20 +3,6 @@ require_relative '../../lib/tic_tac_toe_game/position.rb'
 
 
 RSpec.describe TicTacToeGame::Position do
-    context "#other_turn" do
-        it "Should switch from 'o' to 'x'" do
-            position = TicTacToeGame::Position.new(nil, "o")
-
-            position.other_turn.should == "x"
-        end
-
-        it "Should switch from 'x' to 'o'" do
-            position = TicTacToeGame::Position.new(nil, "x")
-
-            position.other_turn.should == "o"
-        end
-    end
-
     context "#new" do
         it "Should initialize a new board" do
             position = TicTacToeGame::Position.new
@@ -47,16 +33,6 @@ RSpec.describe TicTacToeGame::Position do
         end
     end
 
-    context "#unmove" do
-        it "Should undo a move" do
-            position = TicTacToeGame::Position.new.move(1).unmove
-            init = TicTacToeGame::Position.new
-            position.board.should == init.board
-            position.turn.should == init.turn
-        end
-    end
-
-  
 
     context "#win_lines" do
         it "Should find winning columns, rows, diagonals" do
@@ -176,7 +152,7 @@ RSpec.describe TicTacToeGame::Position do
     end
 end
 
-describe TicTacToeGame::TTT do
+RSpec.describe TicTacToeGame::TTT do
     context "#ask_for_player" do
         it "Should ask who will play first" do
             ttt = TicTacToeGame::TTT.new
