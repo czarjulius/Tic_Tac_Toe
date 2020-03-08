@@ -1,5 +1,5 @@
 require_relative '../../lib/tic_tac_toe_game/play'
-require_relative '../../lib/tic_tac_toe_game/position'
+require_relative '../../lib/tic_tac_toe_game/game'
 
 
 RSpec.describe TicTacToeGame::Play do

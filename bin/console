@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "./lib/tic_tac_toe_game/position"
+require "./lib/tic_tac_toe_game/game"
 
 
 TicTacToeGame::TTT.new.play_game

@@ -1,16 +1,16 @@
 module TicTacToeGame
-    class Move      
-        def initialize(board, turn, movelist)
+    class Move
+        attr_reader :board, :turn
+        def initialize(board, turn = nil)
             @board = board
-            @turn = turn
-            @movelist = movelist
+            
+            # @movelist = movelist
         end
 
-        def move idx
-            @board[idx] = @turn
-            @turn = other_turn
-            @movelist << idx
-            puts @movelist
+        def move (idx, toggle)
+            @board[idx] = toggle.current_turn
+            toggle.other_turn
+            # @movelist << idx
             self
         end
     end
