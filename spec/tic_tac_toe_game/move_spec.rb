@@ -1,19 +1,5 @@
 require_relative '../../lib/tic_tac_toe_game/move'
-require_relative '../../lib/tic_tac_toe_game/toggle'
-class FakeToggle
-    attr_reader :toggles
-    def initialize
-        @toggles = 0
-    end
-
-    def current_turn
-        'x'
-    end
-    
-    def other_turn
-        @toggles += 1
-    end
-end
+require_relative 'fake_toggle.rb'
 
 RSpec.describe TicTacToeGame::Move do
     context "#move" do
@@ -24,9 +10,8 @@ RSpec.describe TicTacToeGame::Move do
             make_move = make_move.move(0,fake_toggle)
 
             make_move.board.should == %w(x - -
-                                        - - -
-                                        - - -)
-        
+                                         - - -
+                                         - - -)       
         end
 
         it "should toggle the player after making a move" do

@@ -1,11 +1,11 @@
 require_relative 'play'
 require_relative 'toggle'
 require_relative 'move'
-require_relative 'lunch_game.rb'
+require_relative 'launch_game.rb'
 
 module TicTacToeGame
     class Game
-        attr_accessor :board
+        attr_reader :board
         def initialize(board = nil, turn = "x")
             @dim = 3
             @size = @dim * @dim
