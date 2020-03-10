@@ -58,5 +58,5 @@ module TicTacToeGame
 end
 
 if __FILE__ == $0
-    TicTacToeGame::TTT.new.play_game
+    TicTacToeGame::LaunchGame.new.play_game
 end
