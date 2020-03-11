@@ -8,12 +8,14 @@ RSpec.describe TicTacToeGame::LaunchGame do
     context "#ask_for_player" do
         it "Should accept player as player1" do
             fakeinput = FakeInput.new(["0", "7", "1"])
-            ttt = TicTacToeGame::LaunchGame.new(fakeinput)
+            output = MockOutput.new
+            ttt = TicTacToeGame::LaunchGame.new(fakeinput,output)
             ttt.ask_for_player.should == "player1"
         end
         it "Should accept player as player2" do
             fakeinput = FakeInput.new(["0", "7", "2"])
-            ttt = TicTacToeGame::LaunchGame.new(fakeinput)
+            output = MockOutput.new
+            ttt = TicTacToeGame::LaunchGame.new(fakeinput,output)
             ttt.ask_for_player.should == "player2"
         end
     end
@@ -22,7 +24,8 @@ RSpec.describe TicTacToeGame::LaunchGame do
         it "Should ask for a valid move" do
             fakeinput = FakeInput.new("1")
             fakegame = FakeGame.new
-            ttt = TicTacToeGame::LaunchGame.new(fakeinput)
+            output = MockOutput.new
+            ttt = TicTacToeGame::LaunchGame.new(fakeinput,output)
 
             ttt.ask_for_move(fakegame).should == 1
         end
@@ -51,6 +54,18 @@ RSpec.describe TicTacToeGame::LaunchGame do
 
             ttt.play_game
             expect(output.win).to be true
+        end
+
+        it "Should display game while the game is not yet over" do
+            fakeinput = FakeInput.new("1")
+            output = MockOutput.new
+            game = FakeGame.new([])
+            game.is_blocked = false
+            game.is_won = true
+            ttt = TicTacToeGame::LaunchGame.new(fakeinput, output, game)
+
+            ttt.play_game
+            expect(output.display_game(game)).to be true
         end
 
     end

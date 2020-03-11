@@ -5,9 +5,15 @@ require "./lib/tic_tac_toe_game/game"
 
 require "./lib/tic_tac_toe_game/language_settings"
 
-language_choice = "english"
+puts "Please chose your preferred language"
+puts "1. English"
+puts "2. Igbo"
+print "Choice: "
 
-if language_choice == ""
+language_choice = gets.chomp
+
+
+if language_choice == "1"
     include English
 else
     include Igbo

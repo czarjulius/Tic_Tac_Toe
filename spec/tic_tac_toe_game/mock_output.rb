@@ -36,6 +36,7 @@ class MockOutput
         @move_text
     end
     def display_game(game)
+        true
     end
 
 end
