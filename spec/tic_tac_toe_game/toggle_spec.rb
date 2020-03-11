@@ -1,4 +1,4 @@
-require_relative '../../lib/tic_tac_toe_game/toggle.rb'
+require_relative '../../lib/tic_tac_toe_game/toggle'
 
 RSpec.describe TicTacToeGame::Toggle do
     context "#other_turn" do

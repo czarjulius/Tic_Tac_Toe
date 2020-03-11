@@ -10,7 +10,6 @@ module TicTacToeGame
             @dim = 3
             @size = @dim * @dim
             @board = board || Array.new(@size, "-")
-            # @movelist = []
             @play = Play.new(@board)
             @toggle = Toggle.new(turn)
             @move = Move.new(@board, @turn)
