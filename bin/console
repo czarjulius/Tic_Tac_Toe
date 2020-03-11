@@ -3,5 +3,16 @@
 require "bundler/setup"
 require "./lib/tic_tac_toe_game/game"
 
+require "./lib/tic_tac_toe_game/language_settings"
+
+language_choice = "english"
+
+if language_choice == ""
+    include English
+else
+    include Igbo
+end
+
+
 
 TicTacToeGame::LaunchGame.new.play_game
