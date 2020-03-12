@@ -19,4 +19,7 @@ class FakeGame
     def blocked?
         @is_blocked
     end
+    def clear_board
+        
+    end
 end

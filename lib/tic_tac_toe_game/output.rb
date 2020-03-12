@@ -1,28 +1,47 @@
+require "json"
+
+require "./lib/tic_tac_toe_game/language_option"
+
+
+
 class Output
+    
+    def initialize(new_language_option = LanguageOption.new(JSON.parse(File.read("./lib/tic_tac_toe_game/language_settings.json"))))
+      @new_language_option = new_language_option
+      
+    end
+
+    def initialize_language_option
+        @language = @new_language_option.chose_language
+    end
+
     def display_tie
-        puts STR_HASH[:text]
+        puts @language["draw_text"]
     end
     def display_win(other_player)
-        puts STR_HASH[:win_text] + other_player
+        puts @language["win_text"] + other_player
     end
     def display_rules
-        puts STR_HASH[:rules_text]
+        puts @language["rules_text"]
     end
 
     def display_ask_for_player
-        puts STR_HASH[:ask_for_player_text]
+        puts @language["ask_for_player_text"]
     end
     def display_player1
-        puts STR_HASH[:player1_text]
+        puts @language["player1_text"]
     end
     def display_player2
-        puts STR_HASH[:player2_text]
+        puts @language["player2_text"]
     end
     def display_choice
-        print STR_HASH[:choice_text]
+        print @language["choice_text"]
     end
     def display_move
-        print STR_HASH[:move_text]
+        print @language["move_text"]
+    end
+    def display_play_again
+        puts @language["play_again_text"]
     end
 
     def display_game(game)

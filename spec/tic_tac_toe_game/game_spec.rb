@@ -106,5 +106,17 @@ RSpec.describe TicTacToeGame::Game do
         end
 
     end
+    context "#clear_board" do
+        
+        it "Should create a fresh board" do
+                game = TicTacToeGame::Game.new(%w(x o x
+                                                    x o x
+                                                    o x o))
+                game.clear_board 
+                expect(game.board).to eq Array.new(9, '-')
+        end
+
+    end
+
 
 end

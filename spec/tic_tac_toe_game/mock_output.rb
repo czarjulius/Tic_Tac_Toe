@@ -1,5 +1,5 @@
 class MockOutput
-    attr_reader :tie, :win
+    attr_reader :tie, :win, :play_again_text
     def initialize
         @tie = false
         @win = false
@@ -9,6 +9,7 @@ class MockOutput
         @player2_text=""
         @choice_text=""
         @move_text=""
+        @play_again_text=""
     end
 
     def display_tie
@@ -37,6 +38,11 @@ class MockOutput
     end
     def display_game(game)
         true
+    end
+    def display_play_again
+        true
+    end
+    def initialize_language_option
     end
 
 end
