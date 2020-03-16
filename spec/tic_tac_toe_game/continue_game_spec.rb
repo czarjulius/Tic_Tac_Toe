@@ -10,14 +10,14 @@ RSpec.describe TicTacToeGame::ContinueGame do
             output = MockOutput.new
             fakeinput = FakeInput.new("1")
             continue_game = TicTacToeGame::ContinueGame.new(output, fakeinput)
-            continue_game.play_again
+            continue_game.play_again?
             expect(output.display_play_again).to be true
         end
         it "Should return true when 1 is passed to play again" do
             output = MockOutput.new
             fakeinput = FakeInput.new("1")
             continue_game = TicTacToeGame::ContinueGame.new(output,fakeinput)
-            continue_game.play_again.should == true
+            continue_game.play_again?.should == true
         end
         
     end

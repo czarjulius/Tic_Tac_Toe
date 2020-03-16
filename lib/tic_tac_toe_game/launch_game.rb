@@ -1,16 +1,12 @@
-require_relative 'output'
-require_relative './continue_game'
 
 module TicTacToeGame
 
     class LaunchGame
-        def initialize(input=STDIN, output=Output.new,  game = Game.new, continue_game = TicTacToeGame::ContinueGame.new(output, input))
+        def initialize(input=STDIN, output, game )
             @input = input
             @output = output
             @game = game
             @player = "player1"
-            @response = true
-            @continue_game = continue_game
         end
         def ask_for_player
             @output.display_rules
@@ -54,15 +50,6 @@ module TicTacToeGame
             end
             @game.clear_board 
         end
-
-        def multiple_play_game
-            while @response
-                play_game
-                @response=@continue_game.play_again
-            end
-        end
-
-
 
     end
 end
