@@ -10,14 +10,17 @@ module TicTacToeGame
             @dim = 3
             @size = @dim * @dim
             @board = board || Array.new(@size, "-")
-            # @movelist = []
             @play = Play.new(@board)
             @toggle = Toggle.new(turn)
             @move = Move.new(@board, @turn)
         end
 
-        def move (idx)
+        def move(idx)
             @move.move(idx,@toggle)
+        end
+        def clear_board
+            @board = Array.new(@size, "-")
+            @move = Move.new(@board, @turn)
         end
 
         def win_lines
@@ -58,5 +61,5 @@ module TicTacToeGame
 end
 
 if __FILE__ == $0
-    TicTacToeGame::LaunchGame.new.play_game
+    TicTacToeGame::LaunchGame.new.multiple_play_game
 end
