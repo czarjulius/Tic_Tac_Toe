@@ -1,4 +1,4 @@
-require_relative 'output.rb'
+require_relative 'output'
 
 module TicTacToeGame
     class ContinueGame
@@ -6,7 +6,7 @@ module TicTacToeGame
             @output = output
             @input = input
         end
-        def play_again
+        def play_again?
             @output.display_play_again
             user_answer = @input.gets.chomp
             if user_answer == "1"

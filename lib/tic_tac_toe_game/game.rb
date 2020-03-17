@@ -1,7 +1,6 @@
 require_relative 'play'
 require_relative 'toggle'
 require_relative 'move'
-require_relative 'launch_game.rb'
 
 module TicTacToeGame
     class Game
@@ -60,6 +59,3 @@ module TicTacToeGame
     end
 end
 
-if __FILE__ == $0
-    TicTacToeGame::LaunchGame.new.multiple_play_game
-end

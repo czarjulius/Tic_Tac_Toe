@@ -38,7 +38,6 @@ RSpec.describe TicTacToeGame::Game do
     context "#win?" do
         it "Should determine no win" do
             TicTacToeGame::Game.new.win?("x").should == false
-            TicTacToeGame::Game.new.win?("o").should == false
         end
         it "Should determine a win for x" do
             TicTacToeGame::Game.new(%w(x x x
