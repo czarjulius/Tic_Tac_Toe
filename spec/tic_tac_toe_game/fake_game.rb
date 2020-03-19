@@ -22,4 +22,7 @@ class FakeGame
     def clear_board
         
     end
+    def best_move
+        
+    end
 end

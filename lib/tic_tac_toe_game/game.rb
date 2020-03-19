@@ -56,6 +56,22 @@ module TicTacToeGame
               " " + line.map {|piece| piece == "-" ? " " : piece}.join(" | ") +" "
             }.join("\n-----------\n") + "\n"
         end
+
+        def minimax(idx = nil)
+            move(idx) if idx
+            leaf_value = evaluate_leaf
+            return leaf_value if leaf_value
+            @move.possible_moves.map{|idx| 
+                minimax(idx).send(@toggle.current_turn == "x" ? :- : :+, @move.current_movelist.count+1)
+            }.send(@toggle.current_turn == "x" ? :max : :min)
+        ensure
+            @move.unmove(@toggle) if idx
+        end
+
+
+        def best_move
+            @move.possible_moves.send(@toggle.current_turn == "x" ? :max_by : :min_by) {|idx| minimax(idx)}
+        end
     end
 end
 

@@ -117,5 +117,36 @@ RSpec.describe TicTacToeGame::Game do
 
     end
 
+    context "#minimax" do
+        it "Should determine an already won position" do
+            TicTacToeGame::Game.new(%w(x x -
+                                        x o o
+                                        x o o)).minimax.should == 100
+        end
+        it "Should determine a  win in 1 for x" do
+            TicTacToeGame::Game.new(%w(x x -
+                                           - - -
+                                           - o o), "x").minimax.should == 99
+        end
+        it "Should determines a  win in 1 for o" do
+            TicTacToeGame::Game.new(%w(x x -
+                                           - - -
+                                           - o o), "o").minimax.should == -99
+        end
+    end
+
+    context "#best_move" do
+        it "Should find the winning move for o" do
+            TicTacToeGame::Game.new(%w(x x -
+                            - - -
+                            - o o), "o").best_move.should == 6      
+        end
+        it "Should find the winning move for x" do
+            TicTacToeGame::Game.new(%w(x x -
+                                   - - -
+                                   - o o), "x").best_move.should == 2     
+        end
+    end
+
 
 end
