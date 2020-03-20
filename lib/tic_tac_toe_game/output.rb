@@ -41,4 +41,17 @@ class Output
         puts game
     end
 
+    def display_ask_for_opponent
+        puts @language["ask_for_opponent_text"]
+    end
+    def display_human
+        puts @language["human_text"]
+    end
+    def display_computer
+        puts @language["computer_text"]
+    end
+    def display_puts
+        puts
+    end
+
 end

@@ -45,4 +45,13 @@ class MockOutput
     def initialize_language_option
     end
 
+    def display_ask_for_opponent
+    end
+    def display_human
+    end
+    def display_computer
+    end
+    def display_puts
+    end
+
 end

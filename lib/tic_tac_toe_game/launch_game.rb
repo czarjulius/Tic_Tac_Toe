@@ -1,46 +1,75 @@
+require_relative "human_human"
+require_relative "human_computer"
+require_relative "human_player_turn"
+require_relative "computer_player_turn"
 
 module TicTacToeGame
 
     class LaunchGame
-        def initialize(input=STDIN, output, game )
+        def initialize(input=STDIN, output=Output.new, game=TicTacToeGame::Game.new, opponent="" )
             @input = input
             @output = output
             @game = game
             @player = "player1"
+
+            if opponent =="human"
+                @game_type = HumanHuman.new(@input,@output)
+            elsif opponent == "computer"
+                @game_type= HumanComputer.new(@input, @output)
+            end
         end
+        def ask_for_opponent
+            @output.display_ask_for_opponent
+            @output.display_human
+            @output.display_computer
+            while @game_type.nil?
+                @output.display_choice
+                ans = @input.gets.chomp
+                if ans == "1"
+                    @game_type = HumanHuman.new(@input,@output)
+                    return @game_type.name
+                end
+                if ans == "2"
+                    @game_type =  HumanComputer.new(@input, @output)
+                    return @game_type.name
+                end
+            end
+        end
+
+        def get_game_type
+            return @game_type
+
+        end
+
+        def ask_for_move(game)
+            @game_type.ask_for_player_move(game, @player)
+        end
+
+
         def ask_for_player
             @output.display_rules
             @output.display_ask_for_player
-            @output.display_player1
-            @output.display_player2
-            while true
-                @output.display_choice
-                ans = @input.gets.chomp
-                return "player1" if ans == "1"
-                return "player2" if ans == "2"
-            end
-        end
 
-        def ask_for_move position
-            while true
-                @output.display_move
-                ans = @input.gets.chomp
-                return ans.to_i if ans =~ /^\d+$/ && position.board[ans.to_i] == "-"
-            end
+            get_game_type.ask_for_first_player
 
         end
+
 
         def other_player
-            @player = @player == "player1" ? "player2" : "player1"
+            @player = get_game_type.next_player(@player)   
         end
+
 
         def play_game
             @output.initialize_language_option
+            ask_for_opponent
             @player = ask_for_player
             while !@game.end?
                 @output.display_game(@game)
-                idx = ask_for_move(@game)
+                @output.display_puts
+                idx = get_game_type.ask_for_player_move(@game, @player)
                 @game.move(idx)
+                other_player
             end
             @output.display_game(@game)
             if @game.blocked?
@@ -49,6 +78,7 @@ module TicTacToeGame
                 @output.display_win(other_player)
             end
             @game.clear_board 
+            @game_type = nil
         end
 
     end
