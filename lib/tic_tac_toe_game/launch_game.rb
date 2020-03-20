@@ -1,7 +1,5 @@
 require_relative "human_human"
 require_relative "human_computer"
-require_relative "human_player_turn"
-require_relative "computer_player_turn"
 
 module TicTacToeGame
 
