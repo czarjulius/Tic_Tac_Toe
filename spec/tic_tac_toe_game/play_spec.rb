@@ -7,7 +7,7 @@ RSpec.describe TicTacToeGame::Play do
         it "Should list possible moves for initial position" do
             board=Array.new(9, "-")
             play = TicTacToeGame::Play.new(board)
-            play.possible_moves.should == (0..8).to_a
+            expect(play.possible_moves).to eq((0..8).to_a)
         end
     end
 end
