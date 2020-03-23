@@ -17,7 +17,8 @@ RSpec.describe TicTacToeGame::ContinueGame do
             output = MockOutput.new
             fakeinput = FakeInput.new("1")
             continue_game = TicTacToeGame::ContinueGame.new(output,fakeinput)
-            continue_game.play_again?.should == true
+            expect(continue_game.play_again?).to be true
+
         end
         
     end
