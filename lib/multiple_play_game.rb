@@ -1,8 +1,18 @@
+require_relative './tic_tac_toe_game/launch_game'
+require_relative './tic_tac_toe_game/output'
+require_relative './tic_tac_toe_game/continue_game'
+require_relative './tic_tac_toe_game/game'
 
 module TicTacToeGame
     class MultiplePlayGame
         attr_reader :lunch_game
-        def initialize(input,output,game, lunch_game,continue_game)
+        def initialize(
+            input=STDIN,
+            output=Output.new,
+            game = TicTacToeGame::Game.new, 
+            lunch_game=TicTacToeGame::LaunchGame.new(input,output,game),
+            continue_game = TicTacToeGame::ContinueGame.new(output, input)
+        )
             @input = input
             @output = output
             @game = game

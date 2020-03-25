@@ -1,8 +1,7 @@
 # Tic Tac Toe Game
 
 ## A tic tac toe game built with ruby
-
-[![Build Status](https://travis-ci.com/czarjulius/Tic_Tac_Toe.svg?branch=master)](https://travis-ci.com/czarjulius/Tic_Tac_Toe)
+[![Build Status](https://travis-ci.com/czarjulius/Tic_Tac_Toe.svg?branch=develop)](https://travis-ci.com/czarjulius/Tic_Tac_Toe)
 
 ## Installation
 - Clone the repo git clone https://github.com/czarjulius/Tic_Tac_Toe.git

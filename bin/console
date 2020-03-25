@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
 require "bundler/setup"
-require "./lib/tic_tac_toe_game/initialize_game"
+require "./lib/multiple_play_game"
 
+TicTacToeGame::MultiplePlayGame.new.multiple_play_game
