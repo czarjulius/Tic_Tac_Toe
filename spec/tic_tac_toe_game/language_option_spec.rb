@@ -1,5 +1,5 @@
 require "json"
-require_relative '../../lib/tic_tac_toe_game/language_option.rb'
+require_relative '../../lib/console/language_option.rb'
 require_relative 'fake_input'
 
 

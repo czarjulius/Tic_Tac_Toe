@@ -1,6 +1,6 @@
-require_relative 'play'
-require_relative 'toggle'
-require_relative 'move'
+require_relative './tic_tac_toe_game/play'
+require_relative './tic_tac_toe_game/toggle'
+require_relative './tic_tac_toe_game/move'
 
 module TicTacToeGame
     class Game

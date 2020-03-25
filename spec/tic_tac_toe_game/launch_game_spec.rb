@@ -1,8 +1,8 @@
-require_relative '../../lib/tic_tac_toe_game/launch_game'
+require_relative '../../lib/console/launch_game'
 require_relative 'fake_input'
 require_relative 'fake_game.rb'
 require_relative 'mock_output'
-require_relative '../../lib/tic_tac_toe_game/output.rb'
+require_relative '../../lib/console/output.rb'
 require_relative 'mock_continue_game'
 
 
