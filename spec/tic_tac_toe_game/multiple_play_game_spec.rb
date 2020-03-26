@@ -1,4 +1,4 @@
-require_relative '../../lib/multiple_play_game.rb'
+require_relative '../../lib/console/multiple_play_game.rb'
 require_relative 'mock_lunch_game.rb'
 require_relative 'mock_continue_game'
 

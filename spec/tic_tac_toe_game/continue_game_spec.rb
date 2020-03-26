@@ -1,4 +1,4 @@
-require_relative '../../lib/tic_tac_toe_game/continue_game.rb'
+require_relative '../../lib/console/continue_game.rb'
 require_relative 'mock_output'
 require_relative 'fake_input'
 

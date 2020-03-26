@@ -1,7 +1,7 @@
-require_relative './tic_tac_toe_game/launch_game'
-require_relative './tic_tac_toe_game/output'
-require_relative './tic_tac_toe_game/continue_game'
-require_relative './tic_tac_toe_game/game'
+require_relative 'launch_game'
+require_relative 'output'
+require_relative 'continue_game'
+require_relative '../game.rb'
 
 module TicTacToeGame
     class MultiplePlayGame

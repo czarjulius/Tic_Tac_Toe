@@ -1,4 +1,4 @@
-require_relative '../../lib/tic_tac_toe_game/game'
+require_relative '../../lib/game'
 
 RSpec.describe TicTacToeGame::Game do
     context "#new" do
