@@ -1,4 +1,4 @@
-require_relative '../../lib/tic_tac_toe_game/move'
+require 'game'
 require_relative 'fake_toggle.rb'
 require_relative './fake_game.rb'
 

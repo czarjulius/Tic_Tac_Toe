@@ -2,7 +2,7 @@ require "json"
 require "./lib/console/language_option"
 
 class Output 
-    def initialize(new_language_option = LanguageOption.new(JSON.parse(File.read("./lib/tic_tac_toe_game/language_settings.json"))))
+    def initialize(new_language_option = LanguageOption.new(JSON.parse(File.read(File.join(File.dirname(__FILE__) ,"language_settings.json")))))
       @new_language_option = new_language_option  
     end
     def initialize_language_option
