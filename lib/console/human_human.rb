@@ -16,7 +16,7 @@ class HumanHuman
     end
 
     def next_player(player)
-        player == "player1" ? "player2" : "player1"               
+        TicTacToeGame::HumanHumanToggle.new.current_turn(player)                 
     end
 
     def ask_for_player_move(game, player)

@@ -128,19 +128,9 @@ RSpec.describe TicTacToeGame::Game do
                                            - - -
                                            - o o), "x").minimax.should == 99
         end
-        it "Should determines a  win in 1 for o" do
-            TicTacToeGame::Game.new(%w(x x -
-                                           - - -
-                                           - o o), "o").minimax.should == -99
-        end
     end
 
     context "#best_move" do
-        it "Should find the winning move for o" do
-            TicTacToeGame::Game.new(%w(x x -
-                            - - -
-                            - o o), "o").best_move.should == 6      
-        end
         it "Should find the winning move for x" do
             TicTacToeGame::Game.new(%w(x x -
                                    - - -
